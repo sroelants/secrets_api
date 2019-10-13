@@ -1,0 +1,29 @@
+* Let's plan this out.
+
+** API SPEC
+*** /secrets
+    - POST
+      Takes a JSON object of the form
+      ```
+      { secret: string }
+      ```
+      and returns either a 200 or 401, with a message.
+      The Date and ID are added on the backend.
+
+    - GET
+      Returns a list of all secrets (Maybe look into pagination?
+      Returns a a list
+      ```
+      [{ id: int
+         date: string
+         secret: string
+      }]
+      ```
+
+*** /secret/<id>
+    - GET
+      Gets a single secret with a given ID number.
+
+
+** Models
+   Just need the one model: a secret.

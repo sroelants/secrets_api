@@ -2,17 +2,13 @@ from flask import Flask
 from config import DevelopmentConfig
 from flask_marshmallow import Marshmallow
 from flask_sqlalchemy import SQLAlchemy
-from flask_restplus import Api, Resource
+from flask_restplus import Api
 
 db = SQLAlchemy()
 ma = Marshmallow()
 api = Api()
+from app.resources import SecretsResource
 
-
-@api.route('/api/hello')
-class HelloWorld(Resource):
-    def get(self):
-        return {'hello': 'world'}
 
 def create_app(config=DevelopmentConfig):
     app = Flask(__name__)

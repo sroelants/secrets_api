@@ -9,8 +9,9 @@ class Secret(db.Model):
                             nullable=False,
                             default=datetime.utcnow())
 
-    def __init__(self, secret):
+    def __init__(self, secret, date_posted):
         self.secret = secret
+        self.date_posted = date_posted
 
     def __repr__(self):
         return f"Secret('{self.date_posted}', '{self.secret}')"

@@ -3,6 +3,7 @@ from config import DevelopmentConfig
 from flask_marshmallow import Marshmallow
 from flask_sqlalchemy import SQLAlchemy
 from flask_restplus import Api
+from flask_cors import CORS
 
 db = SQLAlchemy()
 ma = Marshmallow()
@@ -17,5 +18,6 @@ def create_app(config=DevelopmentConfig):
     db.init_app(app)
     ma.init_app(app)
     api.init_app(app)
+    CORS(app)
 
     return app

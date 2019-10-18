@@ -3,6 +3,8 @@ class Config(object):
     TESTING = False
     SQLALCHEMY_DATABASE_URI = 'sqlite:///database.db'
     SQLALCHEMY_TRACK_MODIFICATIONS = False
+    CORS_HEADERS = 'Content-Type'
+
 
 class DevelopmentConfig(Config):
      DEBUG = True

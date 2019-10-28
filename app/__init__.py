@@ -1,5 +1,5 @@
 from flask import Flask
-from config import DevelopmentConfig
+from config import DevelopmentConfig, Config
 from flask_marshmallow import Marshmallow
 from flask_sqlalchemy import SQLAlchemy
 from flask_restplus import Api
@@ -12,7 +12,7 @@ api = Api()
 from app.resources import SecretsResource
 
 
-def create_app(config=DevelopmentConfig):
+def create_app(config=Config):
     app = Flask(__name__)
     app.config.from_object(config)
 

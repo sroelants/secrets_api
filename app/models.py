@@ -8,10 +8,12 @@ class Secret(db.Model):
     date_posted = db.Column(db.DateTime,
                             nullable=False,
                             default=datetime.utcnow())
+    likes = db.Column(db.Integer, nullable=True, default=0)
 
-    def __init__(self, secret, date_posted):
+    def __init__(self, secret, date_posted, likes=0):
         self.secret = secret
         self.date_posted = date_posted
+        self.likes = likes
 
     def __repr__(self):
         return f"Secret('{self.date_posted}', '{self.secret}')"

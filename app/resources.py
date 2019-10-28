@@ -8,8 +8,10 @@ from marshmallow import ValidationError
 
 secret_model = api.model('Secret', {
     'secret': fields.String,
-    'date_posted': fields.DateTime()
+    'date_posted': fields.DateTime(),
+    'likes': fields.Integer
 })
+
 
 @api.route('/api/secrets')
 class SecretsResource(Resource):
@@ -22,7 +24,6 @@ class SecretsResource(Resource):
     def post(self):
         json = request.json
         secret = secret_schema.load(json)
-        print(secret)
         db.session.add(secret)
         db.session.commit()
 
@@ -30,10 +31,18 @@ class SecretsResource(Resource):
         response = jsonify(json).headers.add('Access-Control-Allow-Origin', '*')
 
 
-# @api.route('api/secret/<int:id>')
-# class SecretResource(Resource):
-#     def put(self, id):
-#         pass
+@api.route('/api/secret/<int:id>')
+class SecretResource(Resource):
+    @api.expect(secret_model)
+    def put(self, id):
+        json = request.json
+        update = secret_schema.load(json)
+        secret = Secret.query.get(id)
+        secret.likes = update.likes
+
+        db.session.add(secret)
+        db.session.commit()
+
 
 
 @api.route('/api/secrets/<int:page>')

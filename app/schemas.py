@@ -1,5 +1,4 @@
 from app import ma
-from marshmallow import fields
 from app.models import Secret
 
 

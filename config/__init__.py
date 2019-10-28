@@ -1,3 +1,4 @@
+import os
 POSTGRES = {
     'user': 'postgres',
     'pw': 'password',
@@ -27,3 +28,6 @@ class TestingConfig(Config):
     # handling so that you get better error reports when performing test
     # requests against the application.
     TESTING = True
+
+class DeployConfig(Config):
+    SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL')

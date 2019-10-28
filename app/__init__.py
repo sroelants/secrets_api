@@ -12,7 +12,7 @@ api = Api()
 from app.resources import SecretsResource
 
 
-def create_app(config=Config):
+def create_app(config=DeployConfig):
     app = Flask(__name__)
     app.config.from_object(config)
 

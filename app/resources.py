@@ -48,7 +48,7 @@ class SecretResource(Resource):
 @api.route('/api/secrets/<int:page>')
 class SecretsPageResource(Resource):
     def get(self, page):
-        secrets = Secret.query.order_by(Secret.date_posted.desc()).paginate(page=page, per_page=1).items
+        secrets = Secret.query.order_by(Secret.date_posted.desc()).paginate(page=page, per_page=3).items
         response = jsonify(secrets_schema.dump(secrets))
         response.headers.add('Access-Control-Allow-Origin', '*')  # CORS
         return response
